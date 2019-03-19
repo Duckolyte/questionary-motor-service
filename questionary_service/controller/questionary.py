@@ -15,7 +15,10 @@ class QuestionaryHandler(BaseHandler):
         document = await db.questionary.find_one(
             {"patient_id": id}
         )
-        self.write(JSONEncoder().encode(document))
+        if document:
+            self.write(JSONEncoder().encode(document))
+
+        self.write_error(status_code=404)
 
     '''
     # bulk read
