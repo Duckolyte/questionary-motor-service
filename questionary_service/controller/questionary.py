@@ -21,7 +21,7 @@ class QuestionaryHandler(BaseHandler):
             self.write(JSONEncoder().encode(questionary_doc))
             return
 
-        self.write_error(status_code=404)
+        self.send_error(status_code=404)
 
     async def post(self, *args, **kwargs):
         inc_body = self.request.body.decode('utf-8')
